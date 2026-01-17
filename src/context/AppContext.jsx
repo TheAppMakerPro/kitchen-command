@@ -372,6 +372,8 @@ export function AppProvider({ children }) {
     addRecentlyViewed,
     markAsCooked,
     getCookedCount,
+    setRecipeNote,
+    getRecipeNote,
     addToMealPlan,
     removeFromMealPlan,
     moveMeal,

@@ -255,7 +255,7 @@ export default function LandingPage() {
               <div className="relative">
                 <div className="absolute inset-0 bg-amber-400 rounded-3xl blur-2xl opacity-40 animate-pulse"></div>
                 <img
-                  src="/icon.png"
+                  src={import.meta.env.BASE_URL + 'icon.png'}
                   alt="Kitchen Command"
                   className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-3xl shadow-2xl"
                 />
@@ -398,7 +398,7 @@ export default function LandingPage() {
       <footer className="py-8 px-4 border-t border-gray-200 dark:border-gray-700">
         <div className="max-w-6xl mx-auto text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <img src="/icon.png" alt="Kitchen Command" className="w-8 h-8 rounded-lg" />
+            <img src={import.meta.env.BASE_URL + 'icon.png'} alt="Kitchen Command" className="w-8 h-8 rounded-lg" />
             <span className="font-semibold text-gray-900 dark:text-white">Kitchen Command</span>
           </div>
           <p className="text-sm text-gray-500 dark:text-gray-400">

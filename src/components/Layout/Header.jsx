@@ -30,7 +30,7 @@ export default function Header({ onMenuToggle, onAccessibilityToggle, onDietaryT
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity" />
               <img
-                src="/icon.png"
+                src={import.meta.env.BASE_URL + 'icon.png'}
                 alt="Kitchen Command"
                 className="relative w-10 h-10 rounded-xl shadow-lg"
               />

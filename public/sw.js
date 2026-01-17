@@ -1,13 +1,16 @@
 // Service Worker for Kitchen Command
-const CACHE_NAME = 'kitchen-command-v1'
-const RECIPE_CACHE = 'kitchen-command-recipes-v1'
-const IMAGE_CACHE = 'kitchen-command-images-v1'
+const CACHE_NAME = 'kitchen-command-v2'
+const RECIPE_CACHE = 'kitchen-command-recipes-v2'
+const IMAGE_CACHE = 'kitchen-command-images-v2'
+
+// Base path for the app (update this if deploying to a different path)
+const BASE_PATH = '/app/kitchen-command/'
 
 // Static assets to cache on install
 const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
+  BASE_PATH,
+  BASE_PATH + 'index.html',
+  BASE_PATH + 'manifest.json',
 ]
 
 // Install event - cache static assets
