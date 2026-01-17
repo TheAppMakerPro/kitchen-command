@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { useApp } from './context/AppContext'
 
-// Layout
+// Layout (loaded immediately)
 import Header from './components/Layout/Header'
 import Sidebar from './components/Layout/Sidebar'
 import MobileNav from './components/Layout/MobileNav'
@@ -11,21 +11,33 @@ import DietaryPreferences from './components/DietaryPreferences'
 import OfflineIndicator from './components/ui/OfflineIndicator'
 import ErrorBoundary from './components/ui/ErrorBoundary'
 
-// Pages
-import Home from './pages/Home'
-import Search from './pages/Search'
-import RecipePage from './pages/RecipePage'
-import Favorites from './pages/Favorites'
-import Fridge from './pages/Fridge'
-import Collections from './pages/Collections'
-import CollectionDetail from './pages/CollectionDetail'
-import MealPlannerPage from './pages/MealPlannerPage'
-import ShoppingListPage from './pages/ShoppingListPage'
-import TechniqueLibrary from './pages/TechniqueLibrary'
-import IngredientGlossary from './pages/IngredientGlossary'
-import SeasonalGuides from './pages/SeasonalGuides'
-import KitchenCalculator from './pages/KitchenCalculator'
-import MealPrepGuides from './pages/MealPrepGuides'
+// Pages (lazy loaded for code splitting)
+const Home = lazy(() => import('./pages/Home'))
+const Search = lazy(() => import('./pages/Search'))
+const RecipePage = lazy(() => import('./pages/RecipePage'))
+const Favorites = lazy(() => import('./pages/Favorites'))
+const Fridge = lazy(() => import('./pages/Fridge'))
+const Collections = lazy(() => import('./pages/Collections'))
+const CollectionDetail = lazy(() => import('./pages/CollectionDetail'))
+const MealPlannerPage = lazy(() => import('./pages/MealPlannerPage'))
+const ShoppingListPage = lazy(() => import('./pages/ShoppingListPage'))
+const TechniqueLibrary = lazy(() => import('./pages/TechniqueLibrary'))
+const IngredientGlossary = lazy(() => import('./pages/IngredientGlossary'))
+const SeasonalGuides = lazy(() => import('./pages/SeasonalGuides'))
+const KitchenCalculator = lazy(() => import('./pages/KitchenCalculator'))
+const MealPrepGuides = lazy(() => import('./pages/MealPrepGuides'))
+
+// Loading fallback for lazy-loaded pages
+function PageLoader() {
+  return (
+    <div className="flex items-center justify-center min-h-[50vh]">
+      <div className="text-center">
+        <div className="w-12 h-12 border-4 border-primary-200 border-t-primary-600 rounded-full animate-spin mx-auto mb-4" />
+        <p className="text-gray-500 dark:text-gray-400">Loading...</p>
+      </div>
+    </div>
+  )
+}
 
 // Toast Component
 function Toast({ toast }) {
@@ -150,23 +162,25 @@ export default function App() {
             message="An unexpected error occurred while loading this page."
             onRetry={() => window.location.reload()}
           >
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/search" element={<Search />} />
-              <Route path="/fridge" element={<Fridge />} />
-              <Route path="/collections" element={<Collections />} />
-              <Route path="/collections/:collectionId" element={<CollectionDetail />} />
-              <Route path="/collections/custom/:customId" element={<CollectionDetail />} />
-              <Route path="/recipe/:id" element={<RecipePage />} />
-              <Route path="/favorites" element={<Favorites />} />
-              <Route path="/meal-planner" element={<MealPlannerPage />} />
-              <Route path="/shopping-list" element={<ShoppingListPage />} />
-              <Route path="/techniques" element={<TechniqueLibrary />} />
-              <Route path="/ingredients" element={<IngredientGlossary />} />
-              <Route path="/seasonal" element={<SeasonalGuides />} />
-              <Route path="/calculator" element={<KitchenCalculator />} />
-              <Route path="/meal-prep" element={<MealPrepGuides />} />
-            </Routes>
+            <Suspense fallback={<PageLoader />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/search" element={<Search />} />
+                <Route path="/fridge" element={<Fridge />} />
+                <Route path="/collections" element={<Collections />} />
+                <Route path="/collections/:collectionId" element={<CollectionDetail />} />
+                <Route path="/collections/custom/:customId" element={<CollectionDetail />} />
+                <Route path="/recipe/:id" element={<RecipePage />} />
+                <Route path="/favorites" element={<Favorites />} />
+                <Route path="/meal-planner" element={<MealPlannerPage />} />
+                <Route path="/shopping-list" element={<ShoppingListPage />} />
+                <Route path="/techniques" element={<TechniqueLibrary />} />
+                <Route path="/ingredients" element={<IngredientGlossary />} />
+                <Route path="/seasonal" element={<SeasonalGuides />} />
+                <Route path="/calculator" element={<KitchenCalculator />} />
+                <Route path="/meal-prep" element={<MealPrepGuides />} />
+              </Routes>
+            </Suspense>
           </ErrorBoundary>
         </main>
       </div>

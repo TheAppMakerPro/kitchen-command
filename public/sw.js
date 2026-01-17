@@ -1,7 +1,7 @@
-// Service Worker for Recipe App
-const CACHE_NAME = 'recipe-app-v1'
-const RECIPE_CACHE = 'recipe-data-v1'
-const IMAGE_CACHE = 'recipe-images-v1'
+// Service Worker for Kitchen Command
+const CACHE_NAME = 'kitchen-command-v1'
+const RECIPE_CACHE = 'kitchen-command-recipes-v1'
+const IMAGE_CACHE = 'kitchen-command-images-v1'
 
 // Static assets to cache on install
 const STATIC_ASSETS = [

@@ -1,23 +1,23 @@
 {
-  "name": "Recipe App",
-  "short_name": "Recipes",
-  "description": "Search, save, and plan your favorite recipes",
+  "name": "Kitchen Command",
+  "short_name": "Kitchen Command",
+  "description": "Your personal recipe hub - search, save, and plan delicious meals",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#f97316",
+  "theme_color": "#8B4513",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icon.svg",
+      "src": "/icon.png",
       "sizes": "512x512",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "maskable"
     }
   ],

@@ -28,13 +28,15 @@ export default function Header({ onMenuToggle, onAccessibilityToggle, onDietaryT
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity" />
-              <div className="relative bg-gradient-to-br from-primary-500 to-primary-600 p-2 rounded-xl shadow-lg">
-                <span className="text-xl">🍽️</span>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity" />
+              <img
+                src="/icon.png"
+                alt="Kitchen Command"
+                className="relative w-10 h-10 rounded-xl shadow-lg"
+              />
             </div>
-            <span className="font-bold text-xl bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              RecipeApp
+            <span className="font-bold text-xl bg-gradient-to-r from-amber-800 to-amber-600 dark:from-amber-400 dark:to-amber-200 bg-clip-text text-transparent">
+              Kitchen Command
             </span>
           </Link>
 
