@@ -93,26 +93,12 @@ function Toast({ toast }) {
   )
 }
 
-export default function App() {
+// Main app layout with header/sidebar
+function AppLayout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [accessibilityOpen, setAccessibilityOpen] = useState(false)
   const [dietaryOpen, setDietaryOpen] = useState(false)
   const { toast } = useApp()
-  const location = useLocation()
-
-  // Check if we're on the landing page
-  const isLandingPage = location.pathname === '/'
-
-  // Landing page has its own layout
-  if (isLandingPage) {
-    return (
-      <div className="min-h-screen transition-colors duration-300">
-        <Suspense fallback={<PageLoader />}>
-          <LandingPage />
-        </Suspense>
-      </div>
-    )
-  }
 
   return (
     <div className="min-h-screen transition-colors duration-300">
@@ -205,4 +191,20 @@ export default function App() {
       <OfflineIndicator />
     </div>
   )
+}
+
+// Main App component - routes between landing page and app
+export default function App() {
+  const location = useLocation()
+  const isLandingPage = location.pathname === '/'
+
+  if (isLandingPage) {
+    return (
+      <Suspense fallback={<PageLoader />}>
+        <LandingPage />
+      </Suspense>
+    )
+  }
+
+  return <AppLayout />
 }

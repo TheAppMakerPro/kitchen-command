@@ -148,20 +148,18 @@ export default function Home() {
 
       {/* Today's Spotlight */}
       <section>
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h2 className="section-title flex items-center gap-3">
-              <span className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl shadow-lg shadow-orange-500/25">
-                <span className="text-xl">✨</span>
-              </span>
-              Today's Spotlight
-            </h2>
-            <p className="section-subtitle">A hand-picked recipe just for you</p>
-          </div>
+        <div className="text-center mb-6">
+          <h2 className="section-title flex items-center justify-center gap-3">
+            <span className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl shadow-lg shadow-orange-500/25">
+              <span className="text-xl">✨</span>
+            </span>
+            Today's Spotlight
+          </h2>
+          <p className="section-subtitle">A hand-picked recipe just for you</p>
           <button
             onClick={refresh}
             disabled={randomLoading}
-            className="btn btn-secondary"
+            className="btn btn-secondary mt-4"
           >
             <svg className={`w-4 h-4 mr-2 ${randomLoading ? 'animate-spin' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -171,7 +169,7 @@ export default function Home() {
         </div>
 
         {randomLoading ? (
-          <div className="max-w-sm">
+          <div className="max-w-sm mx-auto">
             <RecipeCardSkeleton />
           </div>
         ) : randomError ? (
@@ -179,7 +177,7 @@ export default function Home() {
             <InlineError message={`Failed to load: ${randomError}`} onRetry={refresh} />
           </div>
         ) : randomMeal ? (
-          <div className="max-w-sm">
+          <div className="max-w-sm mx-auto">
             <RecipeCard meal={randomMeal} />
           </div>
         ) : null}
