@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useApp } from '../../context/AppContext'
 
 const navItems = [
-  { path: '/', label: 'Home', icon: '🏠', color: 'from-amber-400 to-orange-500' },
+  { path: '/home', label: 'Home', icon: '🏠', color: 'from-amber-400 to-orange-500' },
   { path: '/search', label: 'Search', icon: '🔍', color: 'from-blue-400 to-indigo-500' },
   { path: '/fridge', label: 'My Fridge', icon: '🧊', color: 'from-cyan-400 to-teal-500' },
   { path: '/collections', label: 'Collections', icon: '📚', color: 'from-purple-400 to-indigo-500' },

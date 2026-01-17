@@ -26,7 +26,7 @@ export default function Header({ onMenuToggle, onAccessibilityToggle, onDietaryT
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
+          <Link to="/home" className="flex items-center space-x-3 group">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity" />
               <img
@@ -42,9 +42,9 @@ export default function Header({ onMenuToggle, onAccessibilityToggle, onDietaryT
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
-            <Link to="/" className={navLinkClass('/')}>
+            <Link to="/home" className={navLinkClass('/home')}>
               Home
-              {isActive('/') && (
+              {isActive('/home') && (
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary-500 rounded-full" />
               )}
             </Link>

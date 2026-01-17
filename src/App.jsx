@@ -1,5 +1,5 @@
 import { useState, lazy, Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { useApp } from './context/AppContext'
 
 // Layout (loaded immediately)
@@ -12,6 +12,7 @@ import OfflineIndicator from './components/ui/OfflineIndicator'
 import ErrorBoundary from './components/ui/ErrorBoundary'
 
 // Pages (lazy loaded for code splitting)
+const LandingPage = lazy(() => import('./pages/LandingPage'))
 const Home = lazy(() => import('./pages/Home'))
 const Search = lazy(() => import('./pages/Search'))
 const RecipePage = lazy(() => import('./pages/RecipePage'))
@@ -97,6 +98,21 @@ export default function App() {
   const [accessibilityOpen, setAccessibilityOpen] = useState(false)
   const [dietaryOpen, setDietaryOpen] = useState(false)
   const { toast } = useApp()
+  const location = useLocation()
+
+  // Check if we're on the landing page
+  const isLandingPage = location.pathname === '/'
+
+  // Landing page has its own layout
+  if (isLandingPage) {
+    return (
+      <div className="min-h-screen transition-colors duration-300">
+        <Suspense fallback={<PageLoader />}>
+          <LandingPage />
+        </Suspense>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen transition-colors duration-300">
@@ -164,7 +180,7 @@ export default function App() {
           >
             <Suspense fallback={<PageLoader />}>
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/home" element={<Home />} />
                 <Route path="/search" element={<Search />} />
                 <Route path="/fridge" element={<Fridge />} />
                 <Route path="/collections" element={<Collections />} />
