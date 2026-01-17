@@ -1,0 +1,45 @@
+{
+  "name": "Recipe App",
+  "short_name": "Recipes",
+  "description": "Search, save, and plan your favorite recipes",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f97316",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["food", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "Search Recipes",
+      "short_name": "Search",
+      "description": "Find new recipes",
+      "url": "/search"
+    },
+    {
+      "name": "My Favorites",
+      "short_name": "Favorites",
+      "description": "View saved recipes",
+      "url": "/favorites"
+    },
+    {
+      "name": "Meal Planner",
+      "short_name": "Plan",
+      "description": "Plan your meals",
+      "url": "/meal-planner"
+    }
+  ]
+}
