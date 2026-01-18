@@ -19,26 +19,16 @@ jobs:
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
 
-      - name: Rust cache
-        uses: Swatinem/rust-cache@v2
-        with:
-          workspaces: src-tauri
-
       - name: Install dependencies
-        run: npm ci
-
-      - name: Build web app
-        run: npm run build
+        run: npm install
 
       - name: Build Tauri app
         uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: --target x86_64-pc-windows-msvc
 
       - name: Upload Windows installer
         uses: actions/upload-artifact@v4
         with:
           name: Kitchen-Command-Windows
-          path: src-tauri/target/x86_64-pc-windows-msvc/release/bundle/msi/*.msi
+          path: src-tauri/target/release/bundle/msi/*.msi

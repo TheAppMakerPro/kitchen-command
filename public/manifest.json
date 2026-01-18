@@ -2,20 +2,20 @@
   "name": "Kitchen Command",
   "short_name": "Kitchen Command",
   "description": "Your personal recipe hub - search, save, and plan delicious meals",
-  "start_url": "/app/kitchen-command/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#8B4513",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/app/kitchen-command/icon.png",
+      "src": "./icon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/app/kitchen-command/icon.png",
+      "src": "./icon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
@@ -27,19 +27,19 @@
       "name": "Search Recipes",
       "short_name": "Search",
       "description": "Find new recipes",
-      "url": "/app/kitchen-command/search"
+      "url": "./search"
     },
     {
       "name": "My Favorites",
       "short_name": "Favorites",
       "description": "View saved recipes",
-      "url": "/app/kitchen-command/favorites"
+      "url": "./favorites"
     },
     {
       "name": "Meal Planner",
       "short_name": "Plan",
       "description": "Plan your meals",
-      "url": "/app/kitchen-command/meal-planner"
+      "url": "./meal-planner"
     }
   ]
 }

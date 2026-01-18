@@ -3,8 +3,16 @@ const CACHE_NAME = 'kitchen-command-v2'
 const RECIPE_CACHE = 'kitchen-command-recipes-v2'
 const IMAGE_CACHE = 'kitchen-command-images-v2'
 
-// Base path for the app (update this if deploying to a different path)
-const BASE_PATH = '/app/kitchen-command/'
+// Dynamic base path detection based on where the service worker is registered
+const getBasePath = () => {
+  // Get the service worker's own URL and derive the base path
+  const swUrl = self.location.pathname
+  // Remove 'sw.js' from the path to get the base
+  const basePath = swUrl.replace(/sw\.js$/, '')
+  return basePath || '/'
+}
+
+const BASE_PATH = getBasePath()
 
 // Static assets to cache on install
 const STATIC_ASSETS = [

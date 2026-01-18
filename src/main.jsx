@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
+import RouterWrapper from './router/RouterWrapper'
 import App from './App'
 import { AppProvider } from './context/AppContext'
 import { AccessibilityProvider } from './context/AccessibilityContext'
@@ -9,7 +9,7 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <RouterWrapper>
       <AccessibilityProvider>
         <AppProvider>
           <OfflineProvider>
@@ -17,6 +17,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           </OfflineProvider>
         </AppProvider>
       </AccessibilityProvider>
-    </BrowserRouter>
+    </RouterWrapper>
   </React.StrictMode>,
 )
